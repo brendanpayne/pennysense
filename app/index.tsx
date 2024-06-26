@@ -1,7 +1,7 @@
 import { ScrollView, Text, View, useColorScheme, Image, Animated } from 'react-native'
 import React, { useRef } from 'react'
 import { StatusBar } from 'expo-status-bar'
-import { Link } from 'expo-router'
+import { Link, Redirect, router } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Colors } from '../constants/Colors'
 import { styles } from '../constants/Styles'
@@ -68,15 +68,26 @@ const index = () => {
       </ScrollView>
       <View className="h-[30%]">
         {indicator(scrx)}
-        <PrimaryButton title="Get Started" containerStyle="m-4" />
-        <SecondaryButton title="Log In" containerStyle={`${bgColor} mx-4`} textStyle={textColor} />
-        <View className="items-center justify-center mx-8 pb-4">
+        <PrimaryButton 
+          title="Get Started" 
+          containerStyle="m-4" 
+          onPress={() => router.push('/sign-up')}
+        />
+        <SecondaryButton 
+          title="Log In" 
+          containerStyle={`mx-4`} 
+          textStyle={textColor} 
+          onPress={() => router.push('/sign-in')}
+        />
+        <View className="bottom-8 justify-center items-center">
           <Text className={`font-iregular text-[15px] text-center ${textColor}`}>
             By continuing you accept our{'\n'} 
-            <Link href="/terms" className={styles.hyperlink}>Terms of Service</Link> and <Link href="/privacy" className={styles.hyperlink}>Privacy Policy</Link>
+            <Link href="/terms" className={styles.hyperlink}>Terms of Service</Link>{' '}
+            and <Link href="/privacy" className={styles.hyperlink}>Privacy Policy</Link>
           </Text>
         </View>
       </View>
+      <StatusBar style="light" />
     </View>
   )
 }
