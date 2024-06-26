@@ -1,6 +1,6 @@
 import { View, Text, Image, useColorScheme } from 'react-native';
 import { Tabs } from 'expo-router';
-import { icons } from '../../constants/Icons';
+import { icons } from '../../constants/Images';
 import { Colors } from '../../constants/Colors';
 import { tabConfig } from '../../constants/index';
 
@@ -40,7 +40,7 @@ const TabsLayout: React.FC = () => {
            backgroundColor: theme.background,
            borderTopWidth: 1,
            borderTopColor: theme.tint,
-           height: 60,
+           height: '12%',
          },
       }}
     >
