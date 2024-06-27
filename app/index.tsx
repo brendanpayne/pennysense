@@ -3,10 +3,10 @@ import React, { useRef } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { Link, Redirect, router } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { Colors } from '../constants/Colors'
-import { styles } from '../constants/Styles'
+import { Colors } from '@/constants/Colors'
+import { styles } from '@/constants/Styles'
 
-import { onboardConfig } from '../constants/index'
+import { onboardConfig } from '@/constants/index'
 import {PrimaryButton, SecondaryButton } from '@/components/Buttons'
 
 const indicator = (scrx: Animated.Value) => {
@@ -87,7 +87,7 @@ const index = () => {
           </Text>
         </View>
       </View>
-      <StatusBar style="light" />
+      <StatusBar style="auto" />
     </View>
   )
 }
