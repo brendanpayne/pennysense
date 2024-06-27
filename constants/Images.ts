@@ -8,6 +8,16 @@ export const icons = {
 
   eye: require('@/assets/icons/eye.png'),
   eyeOff: require('@/assets/icons/eye-slash.png'),
+
+  google: require('@/assets/icons/google.png'),
+  apple: require('@/assets/icons/apple.png'),
+  microsoft: require('@/assets/icons/microsoft.png'),
+  discord: require('@/assets/icons/discord.png'),
+}
+
+export const logo = {
+  bannerDark: require('@/assets/images/banner-dark.png'),
+  bannerLight: require('@/assets/images/banner-light.png'),
 }
 
 export const onboardImage = {

@@ -1,9 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./app/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
+  content: ["./app/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}", "./constants/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       colors: {
+        gray: "#A4A5B4",
         primary: {
           DEFAULT: "#00C853",
           100: "#E8F5E9",
@@ -25,7 +26,7 @@ module.exports = {
           200: "#EEEEEE",
         },
         light: {
-          text: '#11181C',
+          text: '#252525',
           background: '#fff',
           tint: '#0a7ea4',
           icon: '#687076',
@@ -33,7 +34,7 @@ module.exports = {
           tabIconSelected: '#0a7ea4',
         },
         dark: {
-          text: '#ECEDEE',
+          text: '#F5F5F5',
           background: '#151718',
           tint: '#fff',
           icon: '#9BA1A6',

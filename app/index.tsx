@@ -79,8 +79,8 @@ const index = () => {
           textStyle={textColor} 
           onPress={() => router.push('/sign-in')}
         />
-        <View className="bottom-8 justify-center items-center">
-          <Text className={`font-iregular text-[15px] text-center ${textColor}`}>
+        <View className="-bottom-6 justify-center items-center">
+          <Text className={`font-iregular text-[15px] text-center text-gray`}>
             By continuing you accept our{'\n'} 
             <Link href="/terms" className={styles.hyperlink}>Terms of Service</Link>{' '}
             and <Link href="/privacy" className={styles.hyperlink}>Privacy Policy</Link>

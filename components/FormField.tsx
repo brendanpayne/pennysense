@@ -30,10 +30,11 @@ const FormField: React.FC<FormFieldProps> = ({
   return (
     <GestureHandlerRootView>
       <View className={`space-y-2 ${style}`}>
-        <Text className={`${dark ? 'text-white' : 'text-black'} ${styles.form.label}`}>{label}</Text>
-        <View className={`${dark ? 'bg-black-100 border-black-100' : 'bg-white-100 border-white-100'} ${styles.form.inputContainer}`}>
+        {/* <Text className={`${dark ? 'text-white' : 'text-black'} ${styles.form.label}`}>{label}</Text> */}
+        <View 
+          className={`${dark ? 'bg-black-100 border-black-100' : 'bg-white-100 border-white-100'} ${styles.form.inputContainer}`}
+        >
           <TextInput
-            style={{ flex: 1 }} // because nativewind flex-1 doesn't work for some reason
             className={`${dark ? 'text-white' : 'text-black'} ${styles.form.input}`}
             value={value}
             placeholder={placeholder}
@@ -45,7 +46,7 @@ const FormField: React.FC<FormFieldProps> = ({
           {label === 'Password' && (
             <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
               <Image
-                source={!showPassword ? icons.eye : icons.eyeOff}
+                source={showPassword ? icons.eye : icons.eyeOff}
                 className='w-6 h-6 opacity-50 ml-2'
                 resizeMode='contain'
                 tintColor={dark ? 'white' : 'black'}
