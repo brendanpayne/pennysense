@@ -27,11 +27,6 @@ const FormField: React.FC<FormFieldProps> = ({
 }) => {
   const [showPassword, setShowPassword] = useState(false);
 
-  const toggleShowPassword = () => {
-    setShowPassword(!showPassword);
-    console.log('Password visibility toggled:', !showPassword); // Debug log
-  };
-
   return (
     <GestureHandlerRootView>
       <View className={`space-y-2 ${style}`}>
@@ -48,7 +43,7 @@ const FormField: React.FC<FormFieldProps> = ({
             {...props}
           />
           {label === 'Password' && (
-            <TouchableOpacity onPress={toggleShowPassword}>
+            <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
               <Image
                 source={!showPassword ? icons.eye : icons.eyeOff}
                 className='w-6 h-6 opacity-50 ml-2'
@@ -59,7 +54,6 @@ const FormField: React.FC<FormFieldProps> = ({
           )}
         </View>
       </View>
-      {/* <Text>Debug Info: {`showPassword: ${showPassword}, secureTextEntry: ${label === 'Password' && !showPassword}`}</Text> */}
     </GestureHandlerRootView>
   );
 };
