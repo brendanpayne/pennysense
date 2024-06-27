@@ -4,7 +4,10 @@ export const icons = {
   transactions: require('@/assets/icons/credit-card.png'),
   profile: require('@/assets/icons/user.png'),
   budgets: require('@/assets/icons/bar-chart.png'),
-  insights: require('@/assets/icons/chart-line.png')
+  insights: require('@/assets/icons/chart-line.png'),
+
+  eye: require('@/assets/icons/eye.png'),
+  eyeOff: require('@/assets/icons/eye-slash.png'),
 }
 
 export const onboardImage = {
