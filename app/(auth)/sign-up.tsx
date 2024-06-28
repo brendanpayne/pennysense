@@ -36,7 +36,6 @@ const SignUp = () => {
     setIsSubmitting(true)
     try {
       const result = await createUser(form.email, form.password, form.name)
-      // TODO: set to global state
       router.replace('/home')
     } catch (error: any) {
       Alert.alert('Error', error.message)

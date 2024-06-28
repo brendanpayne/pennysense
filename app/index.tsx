@@ -8,6 +8,7 @@ import { styles } from '@/constants/Styles'
 
 import { onboardConfig } from '@/constants/index'
 import {PrimaryButton, SecondaryButton } from '@/components/Buttons'
+import { useGlobalContext } from '@/context/GlobalProvider'
 
 const indicator = (scrx: Animated.Value) => {
   return (
@@ -31,6 +32,10 @@ const indicator = (scrx: Animated.Value) => {
 }
 
 const index = () => {
+  const { isLoading, isLoggedIn } = useGlobalContext();
+
+  if (!isLoading && isLoggedIn) return <Redirect href="/home" />;
+
   const colorScheme = useColorScheme();
   const bgColor = colorScheme === 'dark' ? 'bg-dark-background' : 'bg-light-background';
   const textColor = colorScheme === 'dark' ? 'text-dark-text' : 'text-light-text';

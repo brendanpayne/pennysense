@@ -29,7 +29,6 @@ const SignIn = () => {
     setIsSubmitting(true)
     try {
       const result = await signIn(form.email, form.password,)
-      // TODO: set to global state
       router.replace('/home')
     } catch (error: any) {
       Alert.alert('Error', error.message)
