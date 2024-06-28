@@ -1,17 +1,20 @@
-import { View, Text, ScrollView, useColorScheme, Image } from 'react-native'
+import { View, Text, ScrollView, useColorScheme, Image, Alert } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import FormField from '@/components/FormField'
 import { PrimaryButton, SocialButton } from '@/components/Buttons'
 import { styles } from '@/constants/Styles'
 import { icons, logo } from '@/constants/Images'
-import { Link } from 'expo-router'
+import { Link, router } from 'expo-router'
+
+import { createUser } from '@/lib/appwrite'
 
 const SignUp = () => {
   const colorScheme = useColorScheme()
 
   const [form, setForm] = useState(
     {
+      name: '',
       email: '',
       password: '',
       confirmPassword: ''
@@ -19,9 +22,26 @@ const SignUp = () => {
   )
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    if (!form.name || !form.email || !form.password || !form.confirmPassword) {
+      Alert.alert('Error', 'Please fill in all fields')
+      return
+    }
+
+    if (form.password !== form.confirmPassword) {
+      Alert.alert('Error', 'Passwords do not match') 
+      return
+    }
+
     setIsSubmitting(true)
-    console.log('Submitting form...')
+    try {
+      const result = await createUser(form.email, form.password, form.name)
+      // TODO: set to global state
+      router.replace('/home')
+    } catch (error: any) {
+      Alert.alert('Error', error.message)
+      setIsSubmitting(false)
+    }
   }
   return (
     <SafeAreaView className={`${colorScheme === 'dark' ? 'bg-dark-background' : 'bg-light-background'} h-full`}>
@@ -34,10 +54,19 @@ const SignUp = () => {
         <View className='px-8 my-6 justify-center items-center'>
           <Text className={`mt-7 mx-auto text-3xl font-iextrabold ${colorScheme === 'dark' ? 'text-dark-text' : 'text-light-text'}`}>Create an account</Text>
           <FormField
+            label='Name'
+            value={form.name}
+            onChangeText={(text: string) => setForm({ ...form, name: text })}
+            style='mt-7 w-full'
+            dark={colorScheme === 'dark'}
+            placeholder='Enter your full name'
+          />
+          
+          <FormField
             label='Email'
             value={form.email}
             onChangeText={(text: string) => setForm({ ...form, email: text })}
-            style='mt-7 w-full'
+            style='mt-4 w-full'
             dark={colorScheme === 'dark'}
             keyboardType='email-address'
             placeholder='Enter your email'
@@ -64,7 +93,7 @@ const SignUp = () => {
           />
 
           <PrimaryButton
-            title='Sign in'
+            title='Sign up'
             containerStyle='my-7 w-full'
             onPress={() => handleSubmit()}
             isLoading={isSubmitting}

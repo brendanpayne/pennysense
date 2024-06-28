@@ -1,11 +1,13 @@
-import { View, Text, ScrollView, useColorScheme, Image } from 'react-native'
+import { View, Text, ScrollView, useColorScheme, Image, Alert } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import FormField from '@/components/FormField'
 import { PrimaryButton, SocialButton } from '@/components/Buttons'
 import { styles } from '@/constants/Styles'
 import { icons, logo } from '@/constants/Images'
-import { Link } from 'expo-router'
+import { Link, router } from 'expo-router'
+
+import { signIn } from '@/lib/appwrite'
 
 const SignIn = () => {
   const colorScheme = useColorScheme()
@@ -18,9 +20,21 @@ const SignIn = () => {
   )
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    if (!form.email || !form.password) {
+      Alert.alert('Error', 'Please fill in all fields')
+      return
+    }
+
     setIsSubmitting(true)
-    console.log('Submitting form...')
+    try {
+      const result = await signIn(form.email, form.password,)
+      // TODO: set to global state
+      router.replace('/home')
+    } catch (error: any) {
+      Alert.alert('Error', error.message)
+      setIsSubmitting(false)
+    }
   }
   return (
     <SafeAreaView className={`${colorScheme === 'dark' ? 'bg-dark-background' : 'bg-light-background'} h-full`}>
