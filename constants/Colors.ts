@@ -9,10 +9,11 @@ const white = '#fff';
 const black = '#000';
 
 export const Colors = {
-  primary: '#00C853',
+  primary: '#00D09E',
   secondary: '#FFD600',
   black: black,
   white: white,
+  border: 'rgba(164,165,180,0.3)',
   light: {
     text: '#11181C',
     background: white,

@@ -5,6 +5,8 @@ export const icons = {
   profile: require('@/assets/icons/user.png'),
   budgets: require('@/assets/icons/bar-chart.png'),
   insights: require('@/assets/icons/chart-line.png'),
+  bell: require('@/assets/icons/bell.png'),
+  bellExclemation: require('@/assets/icons/bell-exclamation.png'),
 
   eye: require('@/assets/icons/eye.png'),
   eyeOff: require('@/assets/icons/eye-slash.png'),

@@ -9,6 +9,7 @@ interface ButtonProps {
   textStyle?: any;
   isLoading?: boolean;
   icon?: any;
+  iconColor?: any;
 }
 
 export const PrimaryButton: React.FC<ButtonProps> = ({
@@ -69,11 +70,36 @@ export const SocialButton: React.FC<ButtonProps> = ({
       <TouchableOpacity
         onPress={onPress}
         activeOpacity={0.8}
-        className={`rounded-full border-[1.5px] bg-white border-opacity-30 border-gray px-[24px] py-[12px] justify-center items-center ${containerStyle}`}
+        className={`rounded-full border-[1.5px] bg-white border-border px-[24px] py-[12px] justify-center items-center ${containerStyle}`}
         >
         <Image
           source={icon}
-          className='w-6 h-6 '
+          className='w-6 h-6'
+          resizeMode='contain'
+        />
+      </TouchableOpacity>
+    </GestureHandlerRootView>
+  )
+}
+
+export const IconButton: React.FC<ButtonProps> = ({
+  title,
+  onPress,
+  containerStyle,
+  icon,
+  iconColor
+}) => {
+  return (
+    <GestureHandlerRootView className="px-2">
+      <TouchableOpacity
+        onPress={onPress}
+        activeOpacity={0.8}
+        className={`rounded-full border-[1px] border-border px-[12px] py-[12px] justify-center items-center ${containerStyle}`}
+        >
+        <Image
+          source={icon}
+          className={`w-6 h-6`}
+          tintColor={iconColor}
           resizeMode='contain'
         />
       </TouchableOpacity>

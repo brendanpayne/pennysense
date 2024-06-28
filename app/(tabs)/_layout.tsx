@@ -39,8 +39,8 @@ const TabsLayout: React.FC = () => {
          tabBarStyle: {
            backgroundColor: theme.background,
            borderTopWidth: 1,
-           borderTopColor: theme.tint,
-           height: '12%',
+           borderTopColor: Colors.border,
+           height: '10%',
          },
       }}
     >
