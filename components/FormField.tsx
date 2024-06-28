@@ -40,10 +40,10 @@ const FormField: React.FC<FormFieldProps> = ({
             placeholder={placeholder}
             placeholderTextColor={dark ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)'}
             onChangeText={onChangeText}
-            secureTextEntry={label === 'Password' && !showPassword}
+            secureTextEntry={label.includes('Password') ? !showPassword : secureTextEntry}
             {...props}
           />
-          {label === 'Password' && (
+          {label.includes('Password') && (
             <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
               <Image
                 source={showPassword ? icons.eye : icons.eyeOff}
