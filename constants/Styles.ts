@@ -14,6 +14,12 @@ export const styles = {
 
   home: {
     title: 'text-2xl font-iextrabold',
-    subtitle: 'text-md font-iregular'
+    subtitle: 'text-md font-iregular',
+    overview: {
+      container: 'my-4 p-8 space-y-6 rounded-3xl bg-primary',
+      title: 'text-xl font-ibold text-white',
+      balance: 'text-3xl font-iextrabold text-white',
+      content: 'text-white'
+    },
   }
 };

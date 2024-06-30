@@ -3,27 +3,18 @@ import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { FlatList, GestureHandlerRootView } from 'react-native-gesture-handler'
 import { styles } from '@/constants/Styles'
-import header from '@/components/home/header'
+import Header from '@/components/home/header'
+import Overview from '@/components/home/overview'
 
-const mock: any = [
-  {
-    id: 1
-  },
-  {
-    id: 2
-  },
-  {
-    id: 3
-  }
-]
+const mock: any = [...Array(100).keys()].map((i) => ({ $id: i, id: i }))
 
 const Home = () => {
   const colorScheme = useColorScheme();
   const darkMode = colorScheme === 'dark';
   const textColor = darkMode ? 'text-dark-text' : 'text-light-text';
   return (
-    <GestureHandlerRootView>
-      <SafeAreaView className={`h-full ${darkMode ? 'bg-dark-background' : 'bg-light-background'}`}>
+    <SafeAreaView className={`h-full px-8 ${darkMode ? 'bg-dark-background' : 'bg-light-background'}`}>
+      <GestureHandlerRootView className='h-full mt-12 pb-12'>
         <FlatList
           data={mock}
           keyExtractor={(item: any) => item.$id}
@@ -32,10 +23,15 @@ const Home = () => {
               <Text className='text-3xl'>{item.id}</Text>
             </View>
           )}
-          ListHeaderComponent={header}
+          ListHeaderComponent={
+            <View className='space-y-6'>
+              <Header />
+              <Overview />
+            </View>
+          }
         />
-      </SafeAreaView>
-    </GestureHandlerRootView>
+      </GestureHandlerRootView>
+    </SafeAreaView>
   )
 }
 
