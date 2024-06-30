@@ -3,8 +3,10 @@ import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { FlatList, GestureHandlerRootView } from 'react-native-gesture-handler'
 import { styles } from '@/constants/Styles'
+
 import Header from '@/components/home/header'
 import Overview from '@/components/home/overview'
+import Budget from '@/components/home/budget'
 
 const mock: any = [...Array(100).keys()].map((i) => ({ $id: i, id: i }))
 
@@ -27,6 +29,7 @@ const Home = () => {
             <View className='space-y-6'>
               <Header />
               <Overview />
+              <Budget />
             </View>
           }
         />
